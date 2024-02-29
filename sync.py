@@ -47,6 +47,37 @@ def sync2(source, dest):
         if src_hash not in seen:
             shutil.copy(Path(source)/ fn, Path(dest)/ fn)
             
+def sync(source, dest):
+    # imperative shell step 1, gather inputs
+    source_hashes = read_paths_and_hashes(source)
+    dest_hashes = read_paths_and_hashes(dest)
+    
+    # step 2: call functional core
+    actions = determine_actions(
+        source_hashes, 
+        dest_hashes,
+        source,
+        dest,
+        )
+    
+    # imperative shell step 3, apply outputs
+    for action, *paths in actions:
+        if action == "COPY":
+            shutil.copyfile(*paths)
+        if action == "MOVE":
+            shutil.move(*paths)
+        if action == "DELETE":
+            os.remove(paths[0])
+            
+def read_paths_and_hashes(root):
+    hashes = {}
+    for folder, _, files in os.walk(root):
+        for fn in files:
+            hashes[hash_file(Path(folder) / fn)] = fn
+    
+    return hashes
+
+
 
 def determine_actions(source_hashes, dest_hashes, source_folder, dest_folder):
     for sha, filename in source_hashes.items():
