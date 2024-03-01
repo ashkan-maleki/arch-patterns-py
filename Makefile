@@ -5,16 +5,16 @@ export DOCKER_BUILDKIT=1
 all: pull down build up test
 
 build:
-	docker-compose build
+	sudo docker-compose build
 
 up:
-	docker-compose up -d app
+	sudo docker-compose up -d app
 
 down:
-	docker-compose down
+	sudo docker-compose down
 
 logs:
-	docker-compose logs app | tail -100
+	sudo docker-compose logs app | tail -100
 
 test:
 	python -m pytest --tb=short
