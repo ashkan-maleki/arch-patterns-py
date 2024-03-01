@@ -23,4 +23,4 @@ black:
 	black -l 86 $$(find * -name '*.py')
 
 pull:
-	git pull
+	sudo git pull
