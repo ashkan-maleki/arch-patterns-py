@@ -9,7 +9,7 @@ from adapters import repository
 import service_layer.services as services
 
 orm.start_mappers()
-get_session = sessionmaker(bind=create_engine(config.get_api_url()))
+get_session = sessionmaker(bind=create_engine(config.get_progress_uri()))
 app = Flask(__name__)
 
 @app.route("/allocate", methods=["POST"])
