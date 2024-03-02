@@ -2,7 +2,7 @@ from typing import Set, List
 import pytest
 
 import domain.model as model
-import repository
+from adapters import repository
 import service_layer.services as services
 
 class FakeRepository(repository.AbstractRepository):

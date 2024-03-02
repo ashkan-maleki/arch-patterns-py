@@ -1,6 +1,6 @@
 #pylint: disable=protected-access
 import domain.model as model
-import repository
+from adapters import repository
 
 from sqlalchemy.orm import Session
 from sqlalchemy.sql import text
