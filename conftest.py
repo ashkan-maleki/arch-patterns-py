@@ -21,7 +21,7 @@ def in_memory_db():
 @pytest.fixture
 def session(in_memory_db):
     start_mappers()
-    yield sessionmaker(bind=in_memory_db)
+    yield sessionmaker(bind=in_memory_db)()
     clear_mappers()
     
 def wait_for_postgres_to_come_up(engine):
