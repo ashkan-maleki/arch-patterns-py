@@ -23,17 +23,21 @@ def test_orderline_mapper_can_save_lines(session: Session):
     session.add(new_line)
     session.commit()
     
-    rows = list(session.execute('SELECT orderid, sku, qty FROM "order_lines"'))
+    rows = list(session.execute(text('SELECT orderid, sku, qty FROM "order_lines"')))
     assert rows == [("order1", "DECORATIVE-WIDGET", 12)]
     
 def test_retrieving_batches(session: Session):
     session.execute(
-        "INSERT INTO batches (reference, sku, _purchased_quantity, eta)"
+        text(
+            "INSERT INTO batches (reference, sku, _purchased_quantity, eta)"
         ' VALUES ("batch1", "sku1", 100, null)'
+        )
     )
     session.execute(
-        "INSERT INTO batches (reference, sku, _purchased_quantity, eta)"
+        text(
+            "INSERT INTO batches (reference, sku, _purchased_quantity, eta)"
         ' VALUES ("batch2", "sku2", 200, "2011-04-11")'
+        )
     )
     expected = [
         model.Batch("batch1", "sku1", 100, eta=None),
