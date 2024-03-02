@@ -5,7 +5,7 @@ from sqlalchemy.orm import Session
 
 import domain.model as model
 from domain.model import OrderLine
-from repository import AbstractRepository
+from adapters.repository import AbstractRepository
 
 
 class InvalidSku(Exception):
