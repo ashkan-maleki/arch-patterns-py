@@ -6,7 +6,7 @@ import config
 import domain.model as model
 import orm
 import repository
-import services
+import service_layer.services as services
 
 orm.start_mappers()
 get_session = sessionmaker(bind=create_engine(config.get_api_url()))

@@ -3,7 +3,7 @@ import pytest
 
 import domain.model as model
 import repository
-import services
+import service_layer.services as services
 
 class FakeRepository(repository.AbstractRepository):
     def __init__(self, batches: List[model.Batch]) -> None:
