@@ -42,7 +42,7 @@ def wait_for_webapp_to_come_up():
         try:
             return requests.get(url)
         except ConnectionError:
-            time.time(0.5)
+            time.sleep(0.5)
     
     pytest.fail("API never came up")
 
