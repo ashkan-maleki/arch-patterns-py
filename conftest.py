@@ -7,7 +7,7 @@ import requests
 from requests.exceptions import ConnectionError
 from sqlalchemy.exc import OperationalError
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, class_mappers
+from sqlalchemy.orm import sessionmaker, clear_mappers
 
 from orm import metadata, start_mappers
 import config
@@ -22,7 +22,7 @@ def in_memory_db():
 def session(in_memory_db):
     start_mappers()
     yield sessionmaker(bind=in_memory_db)
-    class_mappers()
+    clear_mappers()
     
 def wait_for_postgres_to_come_up(engine):
     deadline = time.time() + 10
@@ -57,7 +57,7 @@ def postgres_db():
 def postgres_session(postgres_db):
     start_mappers()
     yield sessionmaker(bind=postgres_db)()
-    class_mappers()
+    clear_mappers()
     
 
 @pytest.fixture
