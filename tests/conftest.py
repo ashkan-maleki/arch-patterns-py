@@ -48,7 +48,7 @@ def wait_for_webapp_to_come_up():
 
 @pytest.fixture(scope="session")
 def postgres_db():
-    engine = create_engine(config.get_api_url())
+    engine = create_engine(config.get_progress_uri())
     wait_for_postgres_to_come_up(engine)
     metadata.create_all(engine)
     return engine
@@ -99,6 +99,6 @@ def add_stock(postgres_session):
         
 @pytest.fixture
 def restart_api():
-    (Path(__file__).parent / "entrypoints" / "flask_app.py").touch()
+    (Path(__file__).parent.parent / "entrypoints" / "flask_app.py").touch()
     time.sleep(0.5)
     wait_for_webapp_to_come_up()
