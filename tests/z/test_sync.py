@@ -1,7 +1,7 @@
 import tempfile
 from pathlib import Path
 import shutil
-from sync import sync2, determine_actions
+from z.sync import sync2, determine_actions
 
 
 # def test_when_a_file_exists_in_the_source_but_not_the_destination():
