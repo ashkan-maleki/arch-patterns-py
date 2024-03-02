@@ -11,6 +11,7 @@ def test_repository_can_save_a_batch(session: Session):
     
     repo = repository.SqlAlchemyRepository(session)
     repo.add(batch)
+    session.commit()
     
     rows = session.execute(
         text('SELECT reference, sku, _purchased_quantity, eta FROM "batches"')
