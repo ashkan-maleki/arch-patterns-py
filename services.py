@@ -3,8 +3,8 @@ from typing import List
 
 from sqlalchemy.orm import Session
 
-import model
-from model import OrderLine
+import domain.model as model
+from domain.model import OrderLine
 from repository import AbstractRepository
 
 

@@ -1,7 +1,7 @@
 from typing import Set, List
 import pytest
 
-import model
+import domain.model as model
 import repository
 import services
 

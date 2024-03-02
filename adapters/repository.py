@@ -1,5 +1,5 @@
 import abc
-import model
+import domain.model as model
 from typing import List
 from sqlalchemy.orm import Session
 
