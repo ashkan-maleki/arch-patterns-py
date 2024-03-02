@@ -4,8 +4,8 @@ from sqlalchemy.orm import sessionmaker
 
 import config
 import domain.model as model
-import orm
-import repository
+from adapters import orm
+from adapters import repository
 import service_layer.services as services
 
 orm.start_mappers()
