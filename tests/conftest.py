@@ -61,9 +61,6 @@ def postgres_session(postgres_db):
     yield sessionmaker(bind=postgres_db)()
     clear_mappers()
     
-
-@pytest.fixture
-def add_stock(postgres_session):
     batches_added = set()
     skus_added = set()
     
