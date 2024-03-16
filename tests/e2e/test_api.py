@@ -35,13 +35,7 @@ def test_happy_path_returns_201_and_allocated_batch():
     post_to_add_batch(laterbatch, sku, 100, "2011-01-02")
     post_to_add_batch(earlybatch, sku, 100, "2011-01-01")
     post_to_add_batch(otherbatch, othersku, 100, None)
-    add_stock(
-        [
-            (laterbatch, sku, 100, "2011-01-02"),
-            (earlybatch, sku, 100, "2011-01-01"),
-            (otherbatch, othersku, 100, None),
-        ]
-    )
+    
     data = {"orderid": random_orderid(),
             "sku": sku,
             "qty": 3}
