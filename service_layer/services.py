@@ -7,7 +7,7 @@ from sqlalchemy.orm import Session
 import domain.model as model
 from domain.model import OrderLine
 from adapters.repository import AbstractRepository
-import unit_of_work
+from service_layer import unit_of_work
 
 
 class InvalidSku(Exception):

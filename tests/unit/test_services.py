@@ -3,7 +3,7 @@ import pytest
 
 import domain.model as model
 from adapters import repository
-import service_layer.services as services
+from service_layer import services
 from service_layer import unit_of_work
 
 class FakeRepository(repository.AbstractRepository):
