@@ -7,10 +7,10 @@ from sqlalchemy.orm.session import Session
 import config
 from adapters import repository
 
-class AbastractUnitOfWork(abc.ABC):
+class AbstractUnitOfWork(abc.ABC):
     batches: repository.AbstractRepositroy
     
-    def __enter__(self) -> AbastractUnitOfWork:
+    def __enter__(self) -> AbstractUnitOfWork:
         return self
     
     def __exit__(self, *args):
@@ -30,11 +30,11 @@ DEFAULT_SESSION_FACTORY = sessionmaker(
     )
 )
 
-class SqlAlchemyUnitOfWork(AbastractUnitOfWork):
+class SqlAlchemyUnitOfWork(AbstractUnitOfWork):
     def __init__(self, session_factory=DEFAULT_SESSION_FACTORY) -> None:
         self.session_factory = session_factory
         
-    def __enter__(self) -> AbastractUnitOfWork:
+    def __enter__(self) -> AbstractUnitOfWork:
         self.session = self.session_factory()
         self.batches = repository.SqlAlchemyRepository(self.session)
         return super().__enter__()
