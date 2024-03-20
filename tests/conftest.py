@@ -12,7 +12,7 @@ from sqlalchemy.orm import sessionmaker, clear_mappers
 from sqlalchemy.sql import text
 
 from adapters.orm import metadata, start_mappers
-import config
+import src.allocation.config as config
 
 @pytest.fixture
 def in_memory_db():

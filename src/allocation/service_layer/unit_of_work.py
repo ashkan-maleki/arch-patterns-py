@@ -4,7 +4,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.session import Session
 
-import config
+import src.allocation.config as config
 from adapters import repository
 
 class AbstractUnitOfWork(abc.ABC):

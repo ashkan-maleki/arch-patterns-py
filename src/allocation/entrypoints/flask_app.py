@@ -3,7 +3,7 @@ from flask import Flask, request
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-import config
+import src.allocation.config as config
 import domain.model as model
 from adapters import orm
 from adapters import repository
