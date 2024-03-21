@@ -15,6 +15,13 @@ order_lines = Table(
     Column("orderid", String(255)),
 )
 
+products = Table(
+    "products",
+    metadata,
+    Column("sku", String(255), primary_key=True),
+    Column("version_number", Integer, nullable=False, server_default="0"),
+)
+
 batches = Table(
     "batches",
     metadata,
@@ -36,7 +43,7 @@ allocations = Table(
 def start_mappers():
     mapper_reg = registry()
     lines_mapper = mapper_reg.map_imperatively(model.OrderLine, order_lines)
-    mapper_reg.map_imperatively(
+    batches_mapper = mapper_reg.map_imperatively(
         model.Batch,
         batches,
         properties={
@@ -44,4 +51,7 @@ def start_mappers():
                 lines_mapper, secondary=allocations, collection_class=set,
             )
         },
+    )
+    mapper_reg.map_imperatively(
+        model.Product, products, properties={"batches": relationship(batches_mapper)}
     )
