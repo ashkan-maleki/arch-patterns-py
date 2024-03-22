@@ -1,7 +1,8 @@
-import domain.model as model
 from datetime import date
 from sqlalchemy.orm import Session
 from sqlalchemy.sql import text
+
+from allocation.domain import model
 
 def test_orderline_mapper_can_load_lines(session: Session):
     session.execute(

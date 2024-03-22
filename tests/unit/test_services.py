@@ -1,10 +1,10 @@
 from typing import Set, List
 import pytest
 
-import domain.model as model
-from adapters import repository
-from service_layer import services
-from service_layer import unit_of_work
+from allocation.domain import model
+from allocation.adapters import repository
+from allocation.service_layer import services
+from allocation.service_layer import unit_of_work
 
 class FakeRepository(repository.AbstractRepository):
     def __init__(self, batches: List[model.Batch]) -> None:
