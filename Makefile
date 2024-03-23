@@ -1,3 +1,4 @@
+# python3 -m venv venv
 # source venv/bin/activate
 # these will speed up builds, for docker-compose >= 1.25
 export COMPOSE_DOCKER_CLI_BUILD=1
@@ -25,3 +26,8 @@ black:
 
 pull:
 	sudo git pull
+
+require:
+	pip install -r requirements.txt
+	pip install -e src
+	pip install allocation --no-index --find-links src

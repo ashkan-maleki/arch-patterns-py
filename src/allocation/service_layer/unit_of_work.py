@@ -4,8 +4,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.session import Session
 
-import src.allocation.config as config
-from adapters import repository
+from allocation import config
+from allocation.adapters import repository
 
 class AbstractUnitOfWork(abc.ABC):
     products: repository.AbstractRepositroy
