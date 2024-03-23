@@ -1,6 +1,7 @@
 FROM python:3.9-slim-buster
 
 COPY requirements.txt /tmp
+RUN python -m pip install --upgrade pip
 RUN pip install -r /tmp/requirements.txt
 
 RUN mkdir -p /src
