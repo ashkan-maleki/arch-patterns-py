@@ -28,7 +28,7 @@ black:
 	black -l 86 $$(find * -name '*.py')
 
 pull:
-	git pull
+	git pull origin main --force
 
 require:
 	pip install -r requirements.txt
