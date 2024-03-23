@@ -14,8 +14,7 @@ class FakeRepository(repository.AbstractRepository):
         self._products.add(product)
         
     def get(self, sku: str) -> model.Product:
-        return next(p for p in self._products 
-                    if p.sku == sku)
+        return next((p for p in self._products if p.sku == sku), None)
         
 
 class FakeUnitOfWork(unit_of_work.AbstractUnitOfWork):
