@@ -1,4 +1,6 @@
+# sudo rm -rf arch-patterns-py/
 # sudo chmod -R 777 arch-patterns-py/
+# sudo chmod -R 777 .git
 # python3 -m venv venv
 # source venv/bin/activate
 # these will speed up builds, for docker-compose >= 1.25
@@ -26,9 +28,13 @@ black:
 	black -l 86 $$(find * -name '*.py')
 
 pull:
-	sudo git pull
+	git pull
 
 require:
 	pip install -r requirements.txt
 	pip install -e src
 	pip install allocation --no-index --find-links src
+
+access:
+	sudo chmod -R 777 arch-patterns-py/
+	sudo chmod -R 777 .git
