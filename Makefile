@@ -1,3 +1,4 @@
+# sudo chmod -R 777 arch-patterns-py/
 # python3 -m venv venv
 # source venv/bin/activate
 # these will speed up builds, for docker-compose >= 1.25
