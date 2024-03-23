@@ -1,7 +1,8 @@
 import abc
-import domain.model as model
 from typing import List
 from sqlalchemy.orm import Session
+
+from allocation.domain import model
 
 
 class AbstractRepository(abc.ABC):

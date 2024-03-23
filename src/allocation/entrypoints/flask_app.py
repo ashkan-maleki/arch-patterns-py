@@ -3,11 +3,10 @@ from flask import Flask, request
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-import src.allocation.config as config
-import domain.model as model
-from adapters import orm
-from adapters import repository
-from service_layer import services, unit_of_work
+from allocation import config
+from allocation.domain import model
+from allocation.adapters import orm, repository
+from allocation.service_layer import services, unit_of_work
 
 orm.start_mappers()
 get_session = sessionmaker(bind=create_engine(config.get_progress_uri()))

@@ -4,10 +4,11 @@ from datetime import date
 
 from sqlalchemy.orm import Session
 
-import domain.model as model
-from domain.model import OrderLine
-from adapters.repository import AbstractRepository
-from service_layer import unit_of_work
+
+from allocation.domain import  model
+from allocation.domain.model import OrderLine
+from allocation.adapters.repository import AbstractRepository
+from allocation.service_layer import unit_of_work
 
 
 class InvalidSku(Exception):
